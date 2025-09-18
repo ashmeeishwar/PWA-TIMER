@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1-Hour Timer</title>
+    
+    <!-- Tailwind CSS for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts: Inter & Roboto Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Roboto+Mono:wght@700&display=swap" rel="stylesheet">
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="data:application/manifest+json;base64,ewogICJuYW1lIjogIjEtSG91ciBUaW1lciIsCiAgInNob3J0X25hbWUiOiAiVGltZXIiLAogICJzdGFydF91cmwiOiAiLiIsCiAgImRpc3BsYXkiOiAic3RhbmRhbG9uZSIsCiAgImJhY2tncm91bmRfY29sb3IiOiAiIzExMTgyNyIsCiAgInRoZW1lX2NvbG9yIjogIiMyNTYzc2IiLAogICJkZXNjcmlwdGlvbiI6ICJBIHNpbXBsZSAxLWhvdXIgUFdBIHRpbWVyIHRoYXQgd29ya3Mgb2ZmbGluZS4iLAogICJpY29ucyI6IFsKICAgIHsKICAgICAgInNyYyI6ICJkYXRhOmltYWdlL3N2Zyt4bWw7YmFzZTY0LFBITjJaeUI0Yld4dWN6MGlhSFIwY0RvdkwzZDNkeTUzTXk1eWJtY3ZNakF3TUM5emRtY3ZNQzl6ZG1jblkyOXliM056TDBsSlRISnZkVzVwYm1kcGJtRnRaVDBpYzJocGJHUnZiVzFwZEdWd2RHVnpQWFJsYzNSaGNuUXVZMjl0UGp4MFpYSnpiMnhsTG1SdmEyVnVCbTNNY21WaGNIUXVZMjl0TDBSaGRHVStMbU52YlM4aVlYcHpYekV3TUNJZ2QyOXltbWx1TDBObGNuUnBabWd2Ym1jdmMyVnlkbWxqWlY5a1pYUmxjeTloY0dsclpYa3VjR1Z3WDI1aGRHbHZiaTl6WlhKMmFXTjBhVzVuUEM5emRtYysgPHBhdGggZD0iTTEyIDJDNi41IDIgMiA2LjUgMiAxMnM0LjUgMTAgMTAgMTAgMTAtNC41IDEwLTEwUzE3LjUgMiAxMiAyem0wIDE4Yy00LjQgMC04LTMuNi04LThzMy42LTggOC04IDggMy42IDggOC0zLjYgOC04IDh6Ii8+PHBhdGggZD0iTTEyLjUgNyBMMTEgNyBMMTEgMTIgTDE1IDcgTDE2LjI1IDE0LjVMMTQuNzUgMTQuNUwxMy41IDEzIEwxMy41IDEyIEwxMi41IDcgWiIvPjwvc3ZnPg=="LCAogICAgICAic2l6ZXMiOiAiMTkyeDE5MiIsCiAgICAgICJ0eXBlIjogImltYWdlL3N2Zyt4bWwiCiAgICB9LAogICAgewogICAgICAic3JjIjogImRhdGE6aW1hZ2Uvc3ZnK3htbDtiYXNlNjQsUEhOMlp5QjRiV3h1Y3owaWFIUjBjRG92TDNkM2R5NTNNeTV5Ym1jd E1qQXdNQzl6ZG1jdk1DOXpkbWN1WTJGeVkyOXliM056TDBsSlRISnZkVzVwYm1kcGJtRnRaVDBpYzJocGJHUnZiVzFwZEdWd2RHVnpQWFJsYzNSaGNuUXVZMjl0UGp4MFpYSnpiMnhsTG1SdmEyVnVCbTNNY21WaGNIUXVZMjl0TDBSaGRHVStMbU52YlM4aVlYcHpYekV3TUNJZ2QyOXltbWx1TDBObGNuUnBabWd2Ym1jdmMyVnlkbWxqWlY5a1pYUmxjeTloY0dsclpYa3VjR1Z3WDI1aGRHbHZiaTl6WlhKMmFXTjBhVzVuUEM5emRtYysgPHBhdGggZD0iTTEyIDJDNi41IDIgMiA6LjUgMiAxMnM0LjUgMTAgMTAgMTAgMTAtNC45IDEwLTEwUzE3LjUgMiAxMiAyem0wIDE4Yy00LjQgMC04LTMuNi04LThzMy42LTggOC04IDggMy42IDggOC0zLjYgOC04IDh6Ii8+PHBhdGggZD0iTTEyLjUgNyBMMTEgNyBMMTEgMTIgTDE1IDcgTDE2LjI1IDE0LjVMMTQuNzUgMTQuNUwxMy41IDEzIEwxMy41IDEyIEwxMi41IDcgWiIvPjwvc3ZnPg=="LCAogICAgICAic2l6ZXMiOiAiNTEyeDUxMiIsCiAgICAgICJ0eXBlIjogImltYWdlL3N2Zyt4bWwiCiAgICB9CiAgXQp9Cg==">
+    
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-tap-highlight-color: transparent; /* Disable tap highlight on mobile */
+        }
+        #timer-display {
+            font-family: 'Roboto Mono', monospace;
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white flex items-center justify-center min-h-screen p-4 antialiased">
+
+    <div class="flex flex-col items-center text-center">
+        <!-- Main timer display -->
+        <div id="timer-display" class="text-8xl md:text-9xl font-bold tracking-tighter">60:00</div>
+
+        <!-- Action Buttons Container -->
+        <div class="mt-8 flex flex-col items-center space-y-4">
+            <!-- Start/Stop Button -->
+            <button id="timer-button" class="w-64 px-8 py-4 bg-blue-600 text-white text-xl font-bold rounded-lg shadow-lg transform transition-transform duration-200 hover:bg-blue-700 active:scale-95 focus:outline-none focus:ring-4 focus:ring-blue-500 focus:ring-opacity-50">
+                Start 1 Hour Timer
+            </button>
+        </div>
+
+        <!-- Informational text for PWA feature -->
+        <p class="mt-10 text-gray-400 max-w-xs mx-auto">
+            Works offline. For the best experience, add this app to your Home Screen.
+        </p>
+    </div>
+
+    <!-- Tone.js for sound effects -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.7.77/Tone.min.js"></script>
+
+    <script>
+        // --- DOM Elements ---
+        const timerDisplay = document.getElementById('timer-display');
+        const timerButton = document.getElementById('timer-button');
+
+        // --- State Variables ---
+        let timerInterval = null;
+        let endTime = 0;
+        let isTimerRunning = false;
+        const DURATION_MS = 60 * 60 * 1000; // 1 hour in milliseconds
+
+        // --- Core Timer Functions ---
+
+        function startTimer() {
+            if (Notification.permission !== 'granted') {
+                Notification.requestPermission();
+            }
+            endTime = Date.now() + DURATION_MS;
+            isTimerRunning = true;
+            updateButtonState();
+            timerInterval = setInterval(updateDisplay, 100);
+            updateDisplay();
+        }
+
+        function stopTimer() {
+            clearInterval(timerInterval);
+            timerInterval = null;
+            isTimerRunning = false;
+            updateDisplay(DURATION_MS);
+            updateButtonState();
+        }
+
+        function updateDisplay(forcedTimeLeft) {
+            const timeLeft = forcedTimeLeft !== undefined ? forcedTimeLeft : endTime - Date.now();
+            if (timeLeft <= 0) {
+                timerDisplay.textContent = '00:00';
+                if (isTimerRunning) {
+                    finishTimer();
+                }
+                return;
+            }
+            const minutes = Math.floor((timeLeft / 1000) / 60);
+            const seconds = Math.floor((timeLeft / 1000) % 60);
+            timerDisplay.textContent = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+        }
+        
+        function finishTimer() {
+             stopTimer();
+             playSound();
+             showNotification();
+        }
+
+        function updateButtonState() {
+            if (isTimerRunning) {
+                timerButton.textContent = 'Stop & Reset';
+                timerButton.classList.remove('bg-blue-600', 'hover:bg-blue-700');
+                timerButton.classList.add('bg-red-600', 'hover:bg-red-700');
+            } else {
+                timerButton.textContent = 'Start 1 Hour Timer';
+                timerButton.classList.remove('bg-red-600', 'hover:bg-red-700');
+                timerButton.classList.add('bg-blue-600', 'hover:bg-blue-700');
+            }
+        }
+
+        // --- Effects and Notifications ---
+
+        function playSound() {
+            Tone.start().then(() => {
+                const synth = new Tone.Synth().toDestination();
+                synth.triggerAttackRelease("C5", "8n", Tone.now());
+                synth.triggerAttackRelease("G4", "8n", Tone.now() + 0.2);
+            }).catch(e => console.error("Tone.js could not be started.", e));
+        }
+
+        function showNotification() {
+            if (Notification.permission === 'granted') {
+                navigator.serviceWorker.getRegistration().then(reg => {
+                    if (reg) {
+                        reg.showNotification('Timer Finished!', {
+                            body: 'Your 1-hour timer is up.',
+                            icon: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxOTIiIGhlaWdodD0iMTkyIiB2aWV3Qm94PSIwIDAgMjQgMjQiIGZpbGw9IiMxMTgyNyI+PHBhdGggZD0iTTEyIDJDNi41IDIgMiA2LjUgMiAxMnM0LjUgMTAgMTAgMTAgMTAtNC41IDEwLTEwUzE3LjUgMiAxMiAyem0wIDE4Yy00LjQgMC04LTMuNi04LThzMy42LTggOC04IDggMy42IDggOC0zLjYgOC04IDh6Ii8+PHBhdGggZD0iTTEyLjUgNyBMMTEgNyBMMTEgMTIgTDE1IDcgTDE2LjI1IDE0LjVMMTQuNzUgMTQuNUwxMy41IDEzIEwxMy41IDEyIEwxMi41IDcgWiIvPjwvc3ZnPg==',
+                            vibrate: [200, 100, 200],
+                        });
+                    }
+                });
+            }
+        }
+
+        // --- Event Listeners ---
+        timerButton.addEventListener('click', () => {
+            isTimerRunning ? stopTimer() : startTimer();
+        });
+
+        // Initial setup
+        updateDisplay(DURATION_MS);
+    </script>
+    
+    <script>
+        // --- Service Worker Registration ---
+        const swCode = `
+            const CACHE_NAME = 'one-hour-timer-cache-v1';
+            const urlsToCache = ['./']; // Cache the main page itself.
+            self.addEventListener('install', e => { 
+                e.waitUntil(
+                    caches.open(CACHE_NAME).then(c => {
+                        console.log('Caching assets for offline use');
+                        return c.addAll(urlsToCache);
+                    })
+                ) 
+            });
+            self.addEventListener('fetch', e => { 
+                e.respondWith(
+                    caches.match(e.request).then(response => {
+                        return response || fetch(e.request);
+                    })
+                ) 
+            });
+        `;
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                try {
+                    const swUrl = 'data:application/javascript,' + encodeURIComponent(swCode);
+                    navigator.serviceWorker.register(swUrl)
+                        .then(reg => console.log('Service Worker registered successfully.', reg))
+                        .catch(err => console.error('Service Worker registration failed: ', err));
+                } catch (e) { 
+                    console.error("Couldn't register Service Worker: ", e); 
+                }
+            });
+        }
+    </script>
+</body>
+</html>
+
